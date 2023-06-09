@@ -1,0 +1,52 @@
+ AREA RESET,CODE,READONLY  
+ ENTRY                      
+ MOV R0, #0x11
+ MOV R1, #0xab
+ ADD R0, R1
+ LSL R1, #2
+LOOP B LOOP
+ END
+
+;第一题
+ AREA RESET,CODE,READONLY 
+ ENTRY
+ MOV R0, #0x1
+ MOV R1, #0x2
+LOOP
+ ADD R0, R0, R1
+ ADD R1, R1, #0x1
+ CMP R1, #101
+ BNE LOOP
+ END
+ 
+ ;第二题
+Stack_Size	EQU      0x0000010
+ AREA	STACK,  READWRITE
+__stack_limit
+Stack_Mem       SPACE    Stack_Size
+__initial_sp
+
+ AREA RESET,CODE,READONLY 
+Vectors DCD __initial_sp												 
+ ENTRY
+ LDR R0,= Vectors
+ LDR R1,[R0]
+
+ MOV R2, #0x11
+ PUSH {R2}
+ 
+LOOP B LOOP
+ END
+ 
+ ;第四题
+ PRESERVE8
+ AREA RESET,CODE,READONLY
+ ENTRY
+ IMPORT CAL
+ LDR SP, =0x20000460
+ MOV R0, #1
+ MOV R1, #2
+ BL CAL
+ LDR R4, =0x20000000
+ STR R0,[R4]
+ END

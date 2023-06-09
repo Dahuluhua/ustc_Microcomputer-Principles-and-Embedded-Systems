@@ -1,0 +1,53 @@
+
+
+
+ARM Macro Assembler    Page 1 
+
+
+    1 00000000                 AREA             Scopy,CODE,READONLY
+    2 00000000                 EXPORT           strcopy
+    3 00000000         strcopy
+    4 00000000         LOOP
+    5 00000000 F811 2B01       LDRB             R2,[R1],#1
+    6 00000004 F800 2B01       STRB             R2,[R0],#1
+    7 00000008 2A00            CMP              R2,#0
+    8 0000000A D1F9            BNE              LOOP
+    9 0000000C 46F7            MOV              PC,LR
+   10 0000000E                 END
+Command Line: --debug --xref --diag_suppress=9931 --cpu=Cortex-M4.fp --apcs=int
+erwork --depend=..\obj\scopy.d -o..\obj\scopy.o -I"D:\微机原理与嵌入式系统\源码
+\实验0 LED流水灯\USER\RTE" -IC:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\1.0.8\Devic
+e\Include -IC:\Keil_v5\ARM\CMSIS\Include --predefine="__UVISION_VERSION SETA 51
+4" --predefine="STM32F40_41xxx SETA 1" --list=..\obj\scopy.lst Scopy.s
+
+
+
+ARM Macro Assembler    Page 1 Alphabetic symbol ordering
+Relocatable symbols
+
+LOOP 00000000
+
+Symbol: LOOP
+   Definitions
+      At line 4 in file Scopy.s
+   Uses
+      At line 8 in file Scopy.s
+Comment: LOOP used once
+Scopy 00000000
+
+Symbol: Scopy
+   Definitions
+      At line 1 in file Scopy.s
+   Uses
+      None
+Comment: Scopy unused
+strcopy 00000000
+
+Symbol: strcopy
+   Definitions
+      At line 3 in file Scopy.s
+   Uses
+      At line 2 in file Scopy.s
+Comment: strcopy used once
+3 symbols
+336 symbols in table

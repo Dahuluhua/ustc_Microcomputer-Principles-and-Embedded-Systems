@@ -1,0 +1,96 @@
+
+
+
+ARM Macro Assembler    Page 1 
+
+
+    1 00000000                 AREA             Buf,DATA,READWRITE ;
+    2 00000000 00000011 
+                       Num1    DCD              0x11        ;
+    3 00000004 00000022 
+                       Nums    DCD              0x22        ;
+    4 00000008                 AREA             BUF,CODE,READONLY
+    5 00000000                 EXPORT           TestAsm
+    6 00000000                 ENTRY
+    7 00000000         TestAsm
+    8 00000000 4805            LDR              R0,=Num1
+    9 00000002 6801            LDR              R1,[R0]
+   10 00000004 F101 019A       ADD              R1,#0x9A
+   11 00000008 6001            STR              R1,[R0]
+   12 0000000A 4804            LDR              R0,=Nums
+   13 0000000C 6802            LDR              R2,[R0]
+   14 0000000E F102 02AB       ADD              R2,#0xAB
+   15 00000012 6002            STR              R2,[R0]
+   16 00000014 E7FE    LOOP    B                LOOP
+   17 00000016 BF00            NOP
+   18 00000018                 END
+              00000000 
+              00000000 
+Command Line: --debug --xref --diag_suppress=9931 --cpu=Cortex-M4.fp --apcs=int
+erwork --depend=..\obj\test.d -o..\obj\test.o -I"D:\Œ¢ª˙‘≠¿Ì”Î«∂»Î ΩœµÕ≥\‘¥¬Î\ 
+µ—È0 LED¡˜ÀÆµ∆\USER\RTE" -IC:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\1.0.8\Device\
+Include -IC:\Keil_v5\ARM\CMSIS\Include --predefine="__UVISION_VERSION SETA 514"
+ --predefine="STM32F40_41xxx SETA 1" --list=..\obj\test.lst test.s
+
+
+
+ARM Macro Assembler    Page 1 Alphabetic symbol ordering
+Relocatable symbols
+
+Buf 00000000
+
+Symbol: Buf
+   Definitions
+      At line 1 in file test.s
+   Uses
+      None
+Comment: Buf unused
+Num1 00000000
+
+Symbol: Num1
+   Definitions
+      At line 2 in file test.s
+   Uses
+      At line 8 in file test.s
+Comment: Num1 used once
+Nums 00000004
+
+Symbol: Nums
+   Definitions
+      At line 3 in file test.s
+   Uses
+      At line 12 in file test.s
+Comment: Nums used once
+3 symbols
+
+
+
+ARM Macro Assembler    Page 1 Alphabetic symbol ordering
+Relocatable symbols
+
+BUF 00000000
+
+Symbol: BUF
+   Definitions
+      At line 4 in file test.s
+   Uses
+      None
+Comment: BUF unused
+LOOP 00000014
+
+Symbol: LOOP
+   Definitions
+      At line 16 in file test.s
+   Uses
+      At line 16 in file test.s
+Comment: LOOP used once
+TestAsm 00000000
+
+Symbol: TestAsm
+   Definitions
+      At line 7 in file test.s
+   Uses
+      At line 5 in file test.s
+Comment: TestAsm used once
+3 symbols
+341 symbols in table

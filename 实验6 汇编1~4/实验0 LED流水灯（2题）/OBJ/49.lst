@@ -1,0 +1,53 @@
+
+
+
+ARM Macro Assembler    Page 1 
+
+
+    1 00000000                 AREA             RESET,CODE,READONLY
+    2 00000000                 ENTRY
+    3 00000000                 IMPORT           CAL
+    4 00000000 F8DF D014       LDR              SP, =0X20000460
+    5 00000004 F04F 0001       MOV              R0, #1
+    6 00000008 F04F 0102       MOV              R1, #2
+    7 0000000C F7FF FFFE       BL               CAL
+    8 00000010 F04F 5400       LDR              R4, =0X20000000
+    9 00000014 6020            STR              R0,[R4]
+   10 00000016                 END
+              00 00 20000460 
+Command Line: --debug --xref --diag_suppress=9931 --cpu=Cortex-M4.fp --apcs=int
+erwork --depend=..\obj\49.d -o..\obj\49.o -I"D:\微机原理与嵌入式系统\源码\实验0
+ LED流水灯\USER\RTE" -IC:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\1.0.8\Device\Incl
+ude -IC:\Keil_v5\ARM\CMSIS\Include --predefine="__UVISION_VERSION SETA 514" --p
+redefine="STM32F40_41xxx SETA 1" --list=..\obj\49.lst 49.s
+
+
+
+ARM Macro Assembler    Page 1 Alphabetic symbol ordering
+Relocatable symbols
+
+RESET 00000000
+
+Symbol: RESET
+   Definitions
+      At line 1 in file 49.s
+   Uses
+      None
+Comment: RESET unused
+1 symbol
+
+
+
+ARM Macro Assembler    Page 1 Alphabetic symbol ordering
+External symbols
+
+CAL 00000000
+
+Symbol: CAL
+   Definitions
+      At line 3 in file 49.s
+   Uses
+      At line 7 in file 49.s
+Comment: CAL used once
+1 symbol
+337 symbols in table
